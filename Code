@@ -1,0 +1,78 @@
+//**************************************************************************************
+//Purpose:      Create a menu 
+//
+//Input:        User inputs a number to choose what menu item they want (will eventually manipulate to-do list)
+//
+//Author:       Amanda Seasholtz
+//
+//Course:       Summer 2017 Practice
+//
+//Date:         8/4/17
+//
+//Program:      menu.java
+//**************************************************************************************
+import java.util.*;
+public class menu{
+   boolean exit;
+   
+   public static void main(String[]args){
+      Scanner scan = new Scanner(System.in);
+      scan.close();
+   }
+   public void runMenu(){ 
+      printHeader();
+      while (!exit){
+         printMenu();
+         int choice = getInput();
+         performAction(choice);
+      }
+   }
+   private void printHeader(){
+      System.out.println("*********************************");
+      System.out.println("       Welcome to the menu       ");
+      System.out.println("*********************************");
+   }
+   private void printMenu(){
+      System.out.println("Please select one of the following actions:");
+      System.out.println("(1.)Print to-do list");
+      System.out.println("(2.)Add to to-do list");
+      System.out.println("(3.)Delete from to-do list");
+      System.out.println("(0.)Exit");
+   }
+   
+   private int getInput(){
+      Scanner scan = new Scanner(System.in);
+      int choice = -1;
+      while (choice < 0 || choice > 3){   //while invalid...
+         try{
+            System.out.println("\n Enter your choice: ");
+            choice = Integer.parseInt(scan.nextLine());
+         }
+         catch (NumberFormatException e){
+            System.out.println ("Invalid selection. Try again.");
+         }
+      }
+      return choice;
+   }
+   
+   private void performAction(int choice){
+      switch (choice){
+         case 0:
+            exit = true;
+            System.out.println ("Thank you for using To-do list creator!");
+            //print final table
+            
+         case 1:
+            //add method to print list
+            break;
+         case 2:
+            //add method to add to list
+            break;
+         case 3:
+            //add method to delete from list
+            break;
+         default:
+            System.out.print("An (impossible) unknown error has occured");
+      }
+   }
+}
